@@ -47,3 +47,6 @@ public static void main(String [] args)
       s.print(a, n);
 }
 }
+/* Time complexity : o(n^2)
+   space complexity : 0(1);
+   */
