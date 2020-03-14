@@ -1,0 +1,49 @@
+import java.util.*;
+class SelectionSort
+{
+  void swap (int a[], int i , int max_id)
+  {
+     int temp = a[max_id];
+            a[max_id] = a[i];
+            a[i] = temp;
+  }
+   void sort(int a[], int n)
+    {
+        for (int i = 0; i < n-1; i++)
+        {
+            int max_id = i;     
+            for (int j = i+1; j < n; j++)
+                if (a[j] > a[max_id])
+                    max_id = j;
+            swap(a,i,max_id);
+        }
+    }
+   void print(int a[] , int n)
+    {
+        for (int i=0; i<n; ++i)
+            System.out.println(a[i]);
+        System.out.println();
+    }
+      
+}
+public class Selection
+{
+public static void main(String [] args)
+{
+  Scanner inp= new Scanner(System.in);     
+      System.out.print("Enter size of the array: ");  
+      int n= inp.nextInt();
+      int[] a= new int[n];
+      System.out.print("Enter elements to sort");
+      for ( int i=0; i<n ; i++)
+      {
+       
+          System.out.println();
+          a[i] = inp.nextInt();  
+      }
+      SelectionSort s = new SelectionSort();
+      s.sort(a, n);
+      System.out.println("Sorted array");
+      s.print(a, n);
+}
+}
