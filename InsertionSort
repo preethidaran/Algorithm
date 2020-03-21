@@ -1,0 +1,42 @@
+import java.util.*;
+ class insert {
+     void sort(int a[],int n) {
+    for(int i=0 ; i<n ;i++)
+    {
+      for(int j=i;(j>0) && (a[j-1]>a[j]);j--)
+      {
+       int temp = a[j-1];
+        a[j-1] = a[j];
+        a[j] = temp;
+      }
+    }
+     System.out.println("Your sorted array");
+      for(int i=0; i<n; i++)
+      {
+         System.out.println( a[i]);
+      }
+     }
+ }
+
+
+ public class insertion
+ {
+   public static void main(String[] args)
+ {
+    Scanner inp= new Scanner(System.in);     
+      System.out.println("Enter size of the array: ");  
+      int n= inp.nextInt();
+      int[] a= new int[n];
+      System.out.print("Enter the numbers to sort :");
+      for (int i = 0; i < n; i++) 
+      {
+          System.out.println();
+           a[i] = inp.nextInt();    
+      }
+      insert in = new insert();
+      in.sort(a,n);
+ }
+ }
+ 
+ // time complexity - o(n^2)
+ // space complexity - o(1)
