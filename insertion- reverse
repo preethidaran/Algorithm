@@ -1,0 +1,77 @@
+
+import java.util.*;
+class insertReverse {
+     void sort(int a[],int n) {
+         for(int i = n-2 ; i>=0 ; i--)
+         {
+             int temp = a[i]  ;
+             int j;
+             for( j=i+1 ; j<=n-1 && temp>a[j];j++)
+             {
+                 a[j-1] = a[j] ;
+             }
+             a[j-1] = temp ;
+         }
+   
+     System.out.println("Your insertion reverse sorted array");
+      for(int i=0; i<n; i++)
+      {
+         System.out.println( a[i]);
+      }
+     }
+ }
+class insertReverseFront
+{
+    void sort(int a[] , int n)
+    {
+        for(int i=n-2 ; i>=0 ;i--)
+        {
+            int CurrentValue = a[i];
+            int j = n-1;
+            while(j>i && a[j] > CurrentValue)
+            {
+                j--;
+            }
+            int sv = a[j];
+            a[j] = CurrentValue;
+            j--;
+            while(j>i)
+            {
+               int nsv = a[j];
+               a[j] = sv;
+               sv = nsv ;
+               j--;
+               
+            }
+            
+        }
+        System.out.println("sorted reverse from front array");
+        for(int i = 0 ; i<n ;i++)
+        {
+            System.out.println( a[i]);
+        }
+    }
+}
+
+ 
+public class insertionReverse {
+public static void main(String [] arg)
+{
+     Scanner inp= new Scanner(System.in);     
+      System.out.println("Enter size of the array: ");  
+      int n= inp.nextInt();
+      int[] a= new int[n];
+      System.out.print("Enter the numbers to sort :");
+      for (int i = 0; i < n; i++) 
+      {
+          System.out.println();
+           a[i] = inp.nextInt();    
+      }
+      insertReverse ir = new insertReverse();
+      ir.sort(a,n);
+     insertReverseFront irf = new insertReverseFront();
+      irf.sort(a,n);
+}
+
+}
+
