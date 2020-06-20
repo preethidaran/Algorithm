@@ -1,0 +1,87 @@
+import java.util.*;
+class Quick3Sort 
+{
+	public static int[] partition(int a[] , int n ,int l,int h) 
+	{
+		int mid=l;
+		int pivot = a[h];
+		int[] arr = new int[2];
+		if(h-l<=1) 
+		{
+			if(a[h] < a[l]) 
+			 {  
+				int temp = arr[l];
+				arr[l] = arr[h];
+				arr[h] = temp;
+			}
+			arr [0] = l;
+			arr [1] = h;
+			return arr;
+		}
+		while(mid<=h)
+		{
+			if(a[mid]<pivot)
+			{
+				int temp = a[l];
+				a[l] = a[mid];
+				a[mid] = temp;
+				l++;
+				mid++;
+ 			}
+			else if(a[mid]==pivot)
+			{
+				mid++;
+			}
+			else if(a[mid]>pivot) 
+			{
+				int temp = a[mid];
+				a[mid] = a[h];
+				a[h] = temp;
+				h--;
+			}
+		}
+		arr[0] = l-1;
+		arr[1] = mid;
+		return arr;
+	}
+	
+	public static int[] quicksort(int[] a, int n, int l, int h) 
+	{
+		if(l>=h)
+		{
+			return a;
+		}
+		else
+		{
+			int arr[] = new int[2];
+			arr=partition(a,n,l,h);
+			quicksort(a,n,l,arr[0]);
+			quicksort(a,n,arr[1],h);
+		}
+		return a;
+	}
+}
+	public class Main
+	{
+	public static void main(String[] args)
+	{
+	  Scanner inp= new Scanner(System.in);     
+      System.out.println("Enter size of the array: ");  
+      int n= inp.nextInt();
+      int[] a= new int[n];
+      System.out.print("Enter the numbers to sort :");
+      for (int i = 0; i < n; i++) 
+      {
+          System.out.println();
+          a[i] = inp.nextInt();   
+      }
+      Quick3Sort sort = new Quick3Sort();
+		int l = 0, h = n-1;
+		sort.quicksort(a,n,l,h);
+		System.out.println("Sorted array :");
+		for(int i=0;i<n;i++) {
+			System.out.println(a[i]);
+		}
+	}
+	}
+
