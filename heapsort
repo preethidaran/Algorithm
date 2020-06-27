@@ -1,0 +1,60 @@
+import java.util.*;
+class Maxheap {
+ void maxheap(int a[] , int n , int i)
+ {
+   int l = 2 * i + 1;
+   int r = 2 * i + 2;
+    int bigChild = l;
+    if( r < n && a[l] < a[r])
+    {
+         bigChild = r;
+    }
+    if ( a[bigChild] > a[i])
+    {
+        int temp = a[i] ;
+        a[i] = a[bigChild] ;
+        a[bigChild] = temp ;
+ 
+    }
+ }
+
+  public  int[] sort(int a[])
+  {
+    
+     for(int j = a.length; j>1; j--) 
+      {
+          for( int i = j/2 -1; i>=0; i--) 
+            { 
+                maxheap(a, j, i);
+            }
+          int temp =a[j-1];
+          a[j-1] = a[0];
+          a[0] = temp;
+      }
+        return a;
+}
+}
+
+ public class Main {
+     public static void main(String[] args)
+  {
+      Scanner inp= new Scanner(System.in);     
+      System.out.println("Enter size of the array: ");  
+      int n= inp.nextInt();
+      int[] a= new int[n];
+      System.out.print("Enter the numbers to sort :");
+      for (int i = 0; i < n; i++) 
+      {
+          System.out.println();
+          a[i] = inp.nextInt();   
+      }
+     
+        Maxheap heap = new Maxheap();
+        heap.sort(a);
+          System.out.println("Sorted array");
+      for(int i=0;i<a.length;i++)
+      {
+      System.out.println(a[i] );
+      }
+     }
+}
