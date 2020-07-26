@@ -1,0 +1,55 @@
+import java.util.*;
+class Shell
+{
+     void Sort(int a[])
+{
+    int len = a.length;
+    for(int gap = len/2; gap > 0; gap = gap/2)
+    {
+        for(int fw = gap; fw < len; fw++)
+        {
+            int tbi = a[fw], rv; 
+            for(rv = fw-gap; rv >= 0; rv = rv-gap)
+            {                        
+                if(tbi < a[rv])
+                {
+                  a[rv+gap] = a[rv];
+                }                        
+                else 
+                {
+                    break;
+                }
+            }
+            a[rv+gap] = tbi; 
+          }
+        }
+    }
+    // return a;
+
+
+   }
+
+
+ public class Main {
+     public static void main(String[] args)
+  {
+      Scanner inp= new Scanner(System.in);     
+      System.out.println("Enter size of the array: ");  
+      int n= inp.nextInt();
+      int[] a= new int[n];
+      System.out.print("Enter the numbers to sort :");
+      for (int i = 0; i < n; i++) 
+      {
+          System.out.println();
+          a[i] = inp.nextInt();   
+      }
+     
+        Shell s = new Shell();
+        s.Sort(a);
+          System.out.println("Sorted array");
+      for(int i=0;i<n;i++)
+      {
+      System.out.println(a[i] );
+      }
+     }
+}
